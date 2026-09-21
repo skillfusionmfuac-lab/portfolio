@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <title>Sofia — University Lecturer &amp; Chemistry Researcher</title>
+    <meta name="description" content="Sofia is a university lecturer and chemistry researcher dedicated to bridging scientific knowledge, practical research, and meaningful education.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/icon/icon.ico">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Product+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================================
+           CSS RESET & VARIABLES
+        ============================================================ */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --color-primary: #E3E3E3;
+            --color-bg: #FAFAFA;
+            --color-surface: #FFFFFF;
+            --color-border: #E3E3E3;
+            --color-border-subtle: #ECECEC;
+            --color-text-primary: #1A1A1A;
+            --color-text-secondary: #555555;
+            --color-text-muted: #888888;
+            --color-accent: #2C5F8A;
+            --color-accent-light: #EEF4FA;
+
+            --font-family: 'Google Sans', 'Product Sans', 'Nunito', system-ui, -apple-system, sans-serif;
+
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2.5rem;
+            --spacing-xl: 4rem;
+            --spacing-2xl: 6rem;
+
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+
+            --nav-height: 68px;
+            --max-width: 1060px;
+            --transition: 0.2s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--color-bg);
+            color: var(--color-text-primary);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ============================================================
+           UTILITY
+        ============================================================ */
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin-inline: auto;
+            padding-inline: var(--spacing-md);
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            line-height: 1.3;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .section-divider {
+            width: 36px;
+            height: 2px;
+            background-color: var(--color-accent);
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* ============================================================
+           NAVIGATION
+        ============================================================ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            height: var(--nav-height);
+            background-color: rgba(250, 250, 250, 0.96);
+            border-bottom: 1px solid var(--color-border);
+            backdrop-filter: blur(6px);
+        }
+
+        .nav__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .nav__brand {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            letter-spacing: 0.01em;
+        }
+
+        .nav__links {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+
+        .nav__link {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            transition: color var(--transition);
+            padding-block: 0.25rem;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav__link:hover,
+        .nav__link:focus {
+            color: var(--color-accent);
+            border-bottom-color: var(--color-accent);
+            outline: none;
+        }
+
+        /* Hamburger (mobile) */
+        .nav__toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+            background: none;
+            border: none;
+        }
+
+        .nav__toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background-color: var(--color-text-primary);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        /* Mobile nav drawer (CSS-only via checkbox hack) */
+        .nav__checkbox {
+            display: none;
+        }
+
+        /* ============================================================
+           HERO SECTION
+        ============================================================ */
+        .hero-section {
+            padding-top: calc(var(--nav-height) + var(--spacing-xl));
+            padding-bottom: var(--spacing-2xl);
+            background-color: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .hero__inner {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2xl);
+        }
+
+        .hero__content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .hero__eyebrow {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .hero__name {
+            font-size: clamp(2.4rem, 5vw, 3.6rem);
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--color-text-primary);
+            letter-spacing: -0.01em;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .hero__title {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero__tagline {
+            font-size: 1rem;
+            color: var(--color-text-muted);
+            font-style: italic;
+            border-left: 3px solid var(--color-border);
+            padding-left: var(--spacing-sm);
+            max-width: 460px;
+            line-height: 1.6;
+        }
+
+        .hero__cta {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.65rem 1.4rem;
+            font-family: var(--font-family);
+            font-size: 0.875rem;
+            font-weight: 600;
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+            white-space: nowrap;
+        }
+
+        .btn--primary {
+            background-color: var(--color-accent);
+            color: #FFFFFF;
+            border: 1.5px solid var(--color-accent);
+        }
+
+        .btn--primary:hover,
+        .btn--primary:focus {
+            background-color: #23517a;
+            border-color: #23517a;
+            outline: none;
+        }
+
+        .btn--secondary {
+            background-color: transparent;
+            color: var(--color-accent);
+            border: 1.5px solid var(--color-accent);
+        }
+
+        .btn--secondary:hover,
+        .btn--secondary:focus {
+            background-color: var(--color-accent-light);
+            outline: none;
+        }
+
+        .hero__photo-wrap {
+            flex-shrink: 0;
+        }
+
+        .hero__photo {
+            width: 280px;
+            height: 340px;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--color-border);
+        }
+
+        /* ============================================================
+           GENERIC SECTION WRAPPER
+        ============================================================ */
+        .section {
+            padding-block: var(--spacing-2xl);
+        }
+
+        .section--alt {
+            background-color: var(--color-surface);
+            border-top: 1px solid var(--color-border-subtle);
+            border-bottom: 1px solid var(--color-border-subtle);
+        }
+
+        /* ============================================================
+           ABOUT SECTION
+        ============================================================ */
+        .about__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: start;
+        }
+
+        .about__text p {
+            font-size: 0.975rem;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.8;
+        }
+
+        .about__highlights {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .highlight-card {
+            background-color: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-sm) var(--spacing-md);
+        }
+
+        .highlight-card__title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--color-accent);
+            margin-bottom: 0.25rem;
+        }
+
+        .highlight-card__text {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+           RESEARCH SECTION
+        ============================================================ */
+        .research__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+
+        .research-card {
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-md);
+            transition: border-color var(--transition);
+        }
+
+        .research-card:hover {
+            border-color: var(--color-accent);
+        }
+
+        .research-card__icon {
+            font-size: 1.4rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .research-card__title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 0.4rem;
+        }
+
+        .research-card__desc {
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        .research__note {
+            margin-top: var(--spacing-md);
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            font-style: italic;
+        }
+
+        /* ============================================================
+           TEACHING SECTION
+        ============================================================ */
+        .teaching__intro {
+            font-size: 0.975rem;
+            color: var(--color-text-secondary);
+            max-width: 680px;
+            line-height: 1.8;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .teaching__pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--spacing-sm);
+        }
+
+        .pillar {
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: var(--color-bg);
+        }
+
+        .pillar__number {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            -webkit-text-stroke: 1.5px var(--color-accent);
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+
+        .pillar__title {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .pillar__text {
+            font-size: 0.82rem;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+           EXPERIENCE SECTION
+        ============================================================ */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 8px;
+            bottom: 8px;
+            width: 1px;
+            background-color: var(--color-border);
+        }
+
+        .timeline__item {
+            position: relative;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .timeline__item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline__dot {
+            position: absolute;
+            left: -2rem;
+            top: 8px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background-color: var(--color-surface);
+            border: 2px solid var(--color-accent);
+        }
+
+        .timeline__header {
+            display: flex;
+            align-items: baseline;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline__role {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+        }
+
+        .timeline__date {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--color-text-muted);
+            white-space: nowrap;
+        }
+
+        .timeline__org {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline__desc {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.18rem 0.6rem;
+            border-radius: 100px;
+            background-color: var(--color-accent-light);
+            color: var(--color-accent);
+            letter-spacing: 0.02em;
+        }
+
+        /* ============================================================
+           SKILLS SECTION
+        ============================================================ */
+        .skills__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .skill-group {
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-md);
+        }
+
+        .skill-group__header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .skill-group__icon {
+            font-size: 1.1rem;
+        }
+
+        .skill-group__title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-accent);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .skill-list__item {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list__item::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--color-accent);
+            flex-shrink: 0;
+        }
+
+        /* ============================================================
+           CONTACT SECTION
+        ============================================================ */
+        .contact__inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: start;
+        }
+
+        .contact__intro {
+            font-size: 0.975rem;
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact__items {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-md);
+            background-color: var(--color-surface);
+            transition: border-color var(--transition);
+        }
+
+        .contact-item:hover {
+            border-color: var(--color-accent);
+        }
+
+        .contact-item__icon {
+            font-size: 1.1rem;
+            margin-top: 0.1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item__label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-muted);
+            margin-bottom: 0.15rem;
+        }
+
+        .contact-item__value {
+            font-size: 0.9rem;
+            color: var(--color-text-primary);
+        }
+
+        .contact-item__value a {
+            color: var(--color-accent);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .contact-item__value a:hover {
+            color: #23517a;
+        }
+
+        /* ============================================================
+           FOOTER
+        ============================================================ */
+        .footer {
+            background-color: var(--color-surface);
+            border-top: 1px solid var(--color-border);
+            padding-block: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .footer__name {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .footer__copy {
+            font-size: 0.78rem;
+            color: var(--color-text-muted);
+        }
+
+        .footer__links {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-sm);
+        }
+
+        .footer__link {
+            font-size: 0.82rem;
+            color: var(--color-text-muted);
+            transition: color var(--transition);
+        }
+
+        .footer__link:hover {
+            color: var(--color-accent);
+        }
+
+        /* ============================================================
+           RESPONSIVE — TABLET (max 900px)
+        ============================================================ */
+        @media (max-width: 900px) {
+            .about__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact__inner {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ============================================================
+           RESPONSIVE — MOBILE (max 768px)
+        ============================================================ */
+        @media (max-width: 768px) {
+            :root {
+                --spacing-xl: 3rem;
+                --spacing-2xl: 4rem;
+            }
+
+            /* Hamburger menu */
+            .nav__toggle {
+                display: flex;
+            }
+
+            .nav__links {
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                right: 0;
+                background-color: var(--color-surface);
+                border-bottom: 1px solid var(--color-border);
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                padding: var(--spacing-sm) var(--spacing-md);
+                transform: translateY(-110%);
+                transition: transform 0.25s ease;
+                pointer-events: none;
+            }
+
+            .nav__checkbox:checked ~ nav .nav__links {
+                transform: translateY(0);
+                pointer-events: auto;
+            }
+
+            .nav__link {
+                padding-block: 0.6rem;
+                width: 100%;
+                border-bottom: 1px solid var(--color-border-subtle);
+                font-size: 0.95rem;
+            }
+
+            .nav__link:last-child {
+                border-bottom: none;
+            }
+
+            /* Hero */
+            .hero__inner {
+                flex-direction: column-reverse;
+                gap: var(--spacing-md);
+                text-align: center;
+            }
+
+            .hero__photo-wrap {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+
+            .hero__photo {
+                width: 200px;
+                height: 240px;
+            }
+
+            .hero__tagline {
+                margin-inline: auto;
+                text-align: left;
+            }
+
+            .hero__cta {
+                justify-content: center;
+            }
+
+            /* Teaching pillars */
+            .teaching__pillars {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.45rem;
+            }
+
+            .hero__photo {
+                width: 170px;
+                height: 205px;
+            }
+
+            .teaching__pillars {
+                grid-template-columns: 1fr;
+            }
+
+            .skills__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============================================================
+         NAVIGATION
+    ============================================================ -->
+    <header class="nav" role="banner">
+        <div class="container nav__inner">
+
+            <a href="#hero" class="nav__brand" aria-label="Sofia — Go to top">Sofia</a>
+
+            <!-- CSS-only mobile menu toggle -->
+            <input type="checkbox" id="nav-toggle" class="nav__checkbox" aria-hidden="true">
+            <label for="nav-toggle" class="nav__toggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <nav aria-label="Main navigation">
+                <ul class="nav__links" role="list">
+                    <li><a href="#about"      class="nav__link">About</a></li>
+                    <li><a href="#research"   class="nav__link">Research</a></li>
+                    <li><a href="#teaching"   class="nav__link">Teaching</a></li>
+                    <li><a href="#experience" class="nav__link">Experience</a></li>
+                    <li><a href="#contact"    class="nav__link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ============================================================
+             HERO SECTION
+        ============================================================ -->
+        <section id="hero" class="hero-section" aria-label="Introduction">
+            <div class="container hero__inner">
+                <div class="hero__content">
+                    <p class="hero__eyebrow">Academic Portfolio</p>
+                    <h1 class="hero__name">Sofia</h1>
+                    <p class="hero__title">University Lecturer &amp; Chemistry Researcher</p>
+                    <blockquote class="hero__tagline">
+                        Bridging scientific knowledge, practical research,<br>and meaningful education.
+                    </blockquote>
+                    <div class="hero__cta">
+                        <a href="#about"   class="btn btn--primary">About Me</a>
+                        <a href="#contact" class="btn btn--secondary">Get in Touch</a>
+                    </div>
+                </div>
+
+                <div class="hero__photo-wrap">
+                    <img
+                        class="hero__photo"
+                        src="assets/images/me_photo.png"
+                        alt="Sofia, university lecturer and chemistry researcher"
+                    >
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             ABOUT SECTION
+        ============================================================ -->
+        <section id="about" class="section" aria-labelledby="about-heading">
+            <div class="container">
+                <span class="section-label">Who I Am</span>
+                <h2 id="about-heading" class="section-title">About Me</h2>
+                <div class="section-divider" aria-hidden="true"></div>
+
+                <div class="about__grid">
+                    <div class="about__text">
+                        <p>
+                            As a dedicated university lecturer, I am passionate about bridging the gap between complex
+                            theoretical concepts and real-world scientific application. With a strong background in
+                            chemistry, I strive to create dynamic, inclusive classrooms and laboratories that encourage
+                            active participation and critical thinking.
+                        </p>
+                        <p>
+                            My teaching philosophy is grounded in the belief that education is a collaborative journey.
+                            Rather than simply conveying foundational chemical principles, I focus on helping students
+                            develop the analytical and experimental skills required to solve complex problems and
+                            innovate within the sciences.
+                        </p>
+                        <p>
+                            Before entering academia full-time, I worked in applied chemical research — gaining practical
+                            laboratory and industry experience that I now bring directly into my teaching. My goal is to
+                            empower the next generation of scientists to approach challenges with curiosity, confidence,
+                            creativity, and a passion for lifelong learning.
+                        </p>
+                    </div>
+
+                    <div class="about__highlights">
+                        <div class="highlight-card">
+                            <p class="highlight-card__title">Background</p>
+                            <p class="highlight-card__text">Strong foundation in chemistry with applied laboratory and research experience across academic and industry settings.</p>
+                        </div>
+                        <div class="highlight-card">
+                            <p class="highlight-card__title">Teaching Philosophy</p>
+                            <p class="highlight-card__text">Education as a collaborative journey — fostering curiosity, analytical thinking, and experimental confidence in every student.</p>
+                        </div>
+                        <div class="highlight-card">
+                            <p class="highlight-card__title">Research Orientation</p>
+                            <p class="highlight-card__text">Focused on meaningful scientific inquiry that connects theoretical principles to practical, real-world chemical challenges.</p>
+                        </div>
+                        <div class="highlight-card">
+                            <p class="highlight-card__title">Student-Centered</p>
+                            <p class="highlight-card__text">Committed to inclusive, accessible education that empowers students to become independent thinkers and lifelong learners.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             RESEARCH SECTION
+        ============================================================ -->
+        <section id="research" class="section section--alt" aria-labelledby="research-heading">
+            <div class="container">
+                <span class="section-label">Scientific Inquiry</span>
+                <h2 id="research-heading" class="section-title">Research Interests</h2>
+                <div class="section-divider" aria-hidden="true"></div>
+
+                <p style="font-size:0.975rem; color:var(--color-text-secondary); max-width:620px; line-height:1.8; margin-bottom:var(--spacing-sm);">
+                    My research sits at the intersection of chemistry, sustainability, and applied science.
+                    I am particularly interested in how chemical knowledge can address contemporary scientific
+                    and environmental challenges.
+                </p>
+
+                <div class="research__grid">
+                    <article class="research-card">
+                        <div class="research-card__icon" aria-hidden="true">🌿</div>
+                        <h3 class="research-card__title">Green Chemistry</h3>
+                        <p class="research-card__desc">Designing chemical processes and products that minimize hazardous substances and reduce environmental impact.</p>
+                    </article>
+
+                    <article class="research-card">
+                        <div class="research-card__icon" aria-hidden="true">🧪</div>
+                        <h3 class="research-card__title">Organic Synthesis</h3>
+                        <p class="research-card__desc">Exploring the construction of organic molecules and developing efficient synthetic pathways for complex compounds.</p>
+                    </article>
+
+                    <article class="research-card">
+                        <div class="research-card__icon" aria-hidden="true">⚗️</div>
+                        <h3 class="research-card__title">Materials Science</h3>
+                        <p class="research-card__desc">Investigating the structure, properties, and applications of novel chemical materials across scientific disciplines.</p>
+                    </article>
+
+                    <article class="research-card">
+                        <div class="research-card__icon" aria-hidden="true">♻️</div>
+                        <h3 class="research-card__title">Sustainable Chemistry</h3>
+                        <p class="research-card__desc">Advancing chemistry that supports long-term ecological balance and responsible use of natural resources.</p>
+                    </article>
+                </div>
+
+                <p class="research__note">
+                    Research focus areas are subject to update. Additional projects and collaborations will be listed here as they develop.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             TEACHING PHILOSOPHY SECTION
+        ============================================================ -->
+        <section id="teaching" class="section" aria-labelledby="teaching-heading">
+            <div class="container">
+                <span class="section-label">Pedagogy</span>
+                <h2 id="teaching-heading" class="section-title">Teaching Philosophy</h2>
+                <div class="section-divider" aria-hidden="true"></div>
+
+                <p class="teaching__intro">
+                    I believe that great teaching goes beyond the transmission of information. Science education, at its
+                    best, invites students to question, experiment, and discover. My approach centers on creating environments
+                    where students feel both challenged and supported — where making mistakes is a natural part of
+                    scientific growth.
+                </p>
+
+                <div class="teaching__pillars">
+                    <div class="pillar">
+                        <p class="pillar__number" aria-hidden="true">01</p>
+                        <h3 class="pillar__title">Collaborative Learning</h3>
+                        <p class="pillar__text">Science thrives in community. I foster teamwork, peer discussion, and shared problem-solving across all learning environments.</p>
+                    </div>
+                    <div class="pillar">
+                        <p class="pillar__number" aria-hidden="true">02</p>
+                        <h3 class="pillar__title">Critical Thinking</h3>
+                        <p class="pillar__text">Students are encouraged to question assumptions, analyze evidence carefully, and form well-reasoned scientific conclusions.</p>
+                    </div>
+                    <div class="pillar">
+                        <p class="pillar__number" aria-hidden="true">03</p>
+                        <h3 class="pillar__title">Laboratory Learning</h3>
+                        <p class="pillar__text">Hands-on experimentation bridges the gap between theory and practice, making abstract concepts tangible and meaningful.</p>
+                    </div>
+                    <div class="pillar">
+                        <p class="pillar__number" aria-hidden="true">04</p>
+                        <h3 class="pillar__title">Scientific Curiosity</h3>
+                        <p class="pillar__text">Nurturing a genuine love of discovery — helping students see chemistry not just as a subject, but as a way of understanding the world.</p>
+                    </div>
+                    <div class="pillar">
+                        <p class="pillar__number" aria-hidden="true">05</p>
+                        <h3 class="pillar__title">Inclusive Education</h3>
+                        <p class="pillar__text">Every student deserves access to meaningful science education, regardless of their background or prior experience.</p>
+                    </div>
+                    <div class="pillar">
+                        <p class="pillar__number" aria-hidden="true">06</p>
+                        <h3 class="pillar__title">Lifelong Learning</h3>
+                        <p class="pillar__text">My greatest goal is for students to leave my courses not just with knowledge, but with the desire and ability to keep learning independently.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             EXPERIENCE SECTION
+        ============================================================ -->
+        <section id="experience" class="section section--alt" aria-labelledby="experience-heading">
+            <div class="container">
+                <span class="section-label">Career</span>
+                <h2 id="experience-heading" class="section-title">Academic &amp; Professional Experience</h2>
+                <div class="section-divider" aria-hidden="true"></div>
+
+                <div class="timeline" role="list">
+
+                    <article class="timeline__item" role="listitem">
+                        <div class="timeline__dot" aria-hidden="true"></div>
+                        <header class="timeline__header">
+                            <h3 class="timeline__role">University Lecturer</h3>
+                            <span class="timeline__date">[Start Year] — Present</span>
+                        </header>
+                        <p class="timeline__org">[University Name] · Faculty of Science</p>
+                        <p class="timeline__desc">
+                            Responsible for designing and delivering undergraduate and postgraduate chemistry coursework.
+                            Develops engaging, inquiry-based curricula that emphasize both theoretical foundations and
+                            practical laboratory skills. Provides academic mentorship and supervises student research projects.
+                        </p>
+                        <ul class="timeline__tags" aria-label="Key areas">
+                            <li><span class="tag">Curriculum Development</span></li>
+                            <li><span class="tag">Student Mentoring</span></li>
+                            <li><span class="tag">Laboratory Instruction</span></li>
+                            <li><span class="tag">Research Supervision</span></li>
+                        </ul>
+                    </article>
+
+                    <article class="timeline__item" role="listitem">
+                        <div class="timeline__dot" aria-hidden="true"></div>
+                        <header class="timeline__header">
+                            <h3 class="timeline__role">Applied Chemical Researcher</h3>
+                            <span class="timeline__date">[Start Year] — [End Year]</span>
+                        </header>
+                        <p class="timeline__org">[Research Institution / Company]</p>
+                        <p class="timeline__desc">
+                            Conducted applied research in a professional laboratory environment, contributing to
+                            experimental design, data analysis, and scientific reporting. Gained hands-on expertise
+                            that now directly informs classroom and laboratory teaching practice.
+                        </p>
+                        <ul class="timeline__tags" aria-label="Key areas">
+                            <li><span class="tag">Experimental Design</span></li>
+                            <li><span class="tag">Chemical Analysis</span></li>
+                            <li><span class="tag">Scientific Reporting</span></li>
+                            <li><span class="tag">Industry Research</span></li>
+                        </ul>
+                    </article>
+
+                    <article class="timeline__item" role="listitem">
+                        <div class="timeline__dot" aria-hidden="true"></div>
+                        <header class="timeline__header">
+                            <h3 class="timeline__role">Laboratory Research</h3>
+                            <span class="timeline__date">[Start Year] — [End Year]</span>
+                        </header>
+                        <p class="timeline__org">[Institution Name]</p>
+                        <p class="timeline__desc">
+                            Participated in laboratory-based research projects focused on [research area].
+                            Developed core competencies in standard laboratory techniques, safety protocols,
+                            and scientific methodology across extended research periods.
+                        </p>
+                        <ul class="timeline__tags" aria-label="Key areas">
+                            <li><span class="tag">Laboratory Techniques</span></li>
+                            <li><span class="tag">Safety Protocols</span></li>
+                            <li><span class="tag">Data Collection</span></li>
+                            <li><span class="tag">Research Methodology</span></li>
+                        </ul>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SKILLS SECTION
+        ============================================================ -->
+        <section id="skills" class="section" aria-labelledby="skills-heading">
+            <div class="container">
+                <span class="section-label">Expertise</span>
+                <h2 id="skills-heading" class="section-title">Skills &amp; Expertise</h2>
+                <div class="section-divider" aria-hidden="true"></div>
+
+                <div class="skills__grid">
+                    <div class="skill-group">
+                        <div class="skill-group__header">
+                            <span class="skill-group__icon" aria-hidden="true">🔬</span>
+                            <h3 class="skill-group__title">Chemistry</h3>
+                        </div>
+                        <ul class="skill-list" role="list">
+                            <li class="skill-list__item">Chemical Analysis</li>
+                            <li class="skill-list__item">Laboratory Techniques</li>
+                            <li class="skill-list__item">Organic Chemistry</li>
+                            <li class="skill-list__item">Materials Science</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-group">
+                        <div class="skill-group__header">
+                            <span class="skill-group__icon" aria-hidden="true">📚</span>
+                            <h3 class="skill-group__title">Teaching</h3>
+                        </div>
+                        <ul class="skill-list" role="list">
+                            <li class="skill-list__item">University Teaching</li>
+                            <li class="skill-list__item">Laboratory Instruction</li>
+                            <li class="skill-list__item">Curriculum Development</li>
+                            <li class="skill-list__item">Student Mentoring</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-group">
+                        <div class="skill-group__header">
+                            <span class="skill-group__icon" aria-hidden="true">📊</span>
+                            <h3 class="skill-group__title">Research</h3>
+                        </div>
+                        <ul class="skill-list" role="list">
+                            <li class="skill-list__item">Applied Chemical Research</li>
+                            <li class="skill-list__item">Experimental Design</li>
+                            <li class="skill-list__item">Scientific Analysis</li>
+                            <li class="skill-list__item">Research Methodology</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             CONTACT SECTION
+        ============================================================ -->
+        <section id="contact" class="section section--alt" aria-labelledby="contact-heading">
+            <div class="container">
+                <span class="section-label">Get in Touch</span>
+                <h2 id="contact-heading" class="section-title">Contact</h2>
+                <div class="section-divider" aria-hidden="true"></div>
+
+                <div class="contact__inner">
+                    <div>
+                        <p class="contact__intro">
+                            I welcome enquiries from students, fellow researchers, and academic collaborators.
+                            Whether you have a question about my courses, want to discuss a potential research
+                            collaboration, or simply wish to connect — please feel free to reach out.
+                        </p>
+                    </div>
+
+                    <div class="contact__items">
+                        <div class="contact-item">
+                            <span class="contact-item__icon" aria-hidden="true">✉️</span>
+                            <div>
+                                <p class="contact-item__label">Email</p>
+                                <p class="contact-item__value">
+                                    <a href="mailto:email@university.edu">[email@university.edu]</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <span class="contact-item__icon" aria-hidden="true">🏛️</span>
+                            <div>
+                                <p class="contact-item__label">University</p>
+                                <p class="contact-item__value">[University Name] · Faculty of Science</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <span class="contact-item__icon" aria-hidden="true">🔗</span>
+                            <div>
+                                <p class="contact-item__label">Research Profile</p>
+                                <p class="contact-item__value">
+                                    <a href="#" rel="noopener noreferrer" target="_blank">[Research Profile Link]</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <span class="contact-item__icon" aria-hidden="true">💼</span>
+                            <div>
+                                <p class="contact-item__label">LinkedIn</p>
+                                <p class="contact-item__value">
+                                    <a href="#" rel="noopener noreferrer" target="_blank">[LinkedIn Profile]</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================================
+         FOOTER
+    ============================================================ -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <p class="footer__name">Sofia</p>
+            <p class="footer__copy">University Lecturer &amp; Chemistry Researcher</p>
+            <nav aria-label="Footer navigation">
+                <ul class="footer__links" role="list">
+                    <li><a href="#about"      class="footer__link">About</a></li>
+                    <li><a href="#research"   class="footer__link">Research</a></li>
+                    <li><a href="#teaching"   class="footer__link">Teaching</a></li>
+                    <li><a href="#experience" class="footer__link">Experience</a></li>
+                    <li><a href="#contact"    class="footer__link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+</body>
+</html>
